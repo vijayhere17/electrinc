@@ -1,0 +1,196 @@
+/* =====================================================================
+   Franchise Panel — Indian tricolour theme (saffron / white / green)
+   Loaded once from includes/sidebar.php, applies to every panel page.
+   Overrides the blue/navy Tailwind arbitrary classes with !important
+   so it works regardless of the Tailwind Play-CDN inject order.
+   ===================================================================== */
+:root{
+    --fr-saffron:#E0700C;  --fr-saffron-d:#B25400;  --fr-saffron-soft:#FFF3E7;
+    --fr-green:#0E7A3B;     --fr-green-d:#0A5E2D;    --fr-green-soft:#EAF5EC;
+    --fr-ink:#232323;       --fr-ink-2:#6A6A6A;
+    --fr-page:#FBFAF6;      --fr-line:#ECE7DD;
+    --fr-side:#0E3A2A;      --fr-side-2:#12492F;     --fr-side-line:#1C5A3E;
+    --fr-side-mut:#A9C5B5;  --fr-side-txt:#E4F0E8;
+}
+
+/* ---------- page surfaces ---------- */
+body{ background:var(--fr-page) !important; }
+[class~="bg-[#f3f3f3]"],
+[class~="bg-[#f3f4f6]"]{ background:var(--fr-page) !important; }
+
+/* ---------- header banners (were bg-[#17457a]) — dark leaf-motif bar, matches the sidebar ---------- */
+div[class~="bg-[#17457a]"]{
+    background-color:#0E3A2A !important;
+    background-image:
+        url("header-bg.svg"),
+        radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(60% 220% at 4% 50%, rgba(224,112,12,.32), transparent 65%),
+        radial-gradient(55% 200% at 97% 35%, rgba(140,215,165,.16), transparent 60%),
+        linear-gradient(100deg, #0A2A1D 0%, #0E3A2A 55%, #154C32 100%) !important;
+    background-position:right center, 0 0, 0 0, 0 0, 0 0 !important;
+    background-size:auto 100%, 20px 20px, cover, cover, cover !important;
+    background-repeat:no-repeat, repeat, no-repeat, no-repeat, no-repeat !important;
+    color:#fff !important;
+    box-shadow:0 14px 32px -20px rgba(10,42,29,.6) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    position:relative !important;
+    overflow:hidden !important;
+}
+div[class~="bg-[#17457a]"]::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:linear-gradient(180deg,var(--fr-saffron) 0%, #F0A44F 100%);
+}
+div[class~="bg-[#17457a]"] > *{ position:relative; z-index:1; }
+/* buttons/pills sitting on the dark banner keep a translucent-white treatment */
+div[class~="bg-[#17457a]"] [class~="bg-white/15"]{ background:rgba(255,255,255,.12) !important; border:1px solid rgba(255,255,255,.16); }
+div[class~="bg-[#17457a]"] [class~="hover:bg-white/25"]:hover{ background:rgba(255,255,255,.2) !important; }
+
+/* ---------- headings (were text-[#173a67]) ---------- */
+[class~="text-[#173a67]"]{ color:var(--fr-ink) !important; }
+
+/* ---------- links / small accents (were text-[#17457a]) ---------- */
+a[class~="text-[#17457a]"],
+[class~="text-[#17457a]"]{ color:var(--fr-green) !important; }
+
+/* ---------- solid buttons that reused the header colour ---------- */
+button[class~="bg-[#17457a]"],
+a[class~="bg-[#17457a]"],
+input[class~="bg-[#17457a]"]{
+    background:var(--fr-green) !important;
+    background-image:none !important;
+    color:#fff !important;
+    box-shadow:none !important;
+}
+button[class~="bg-[#17457a]"]:hover,
+a[class~="bg-[#17457a]"]:hover{ background:var(--fr-green-d) !important; }
+[class~="hover:bg-[#123a66]"]:hover,
+[class~="hover:bg-[#0e2d4a]"]:hover,
+[class~="hover:bg-[#173d70]"]:hover,
+[class~="hover:bg-[#1a4d80]"]:hover{ background:var(--fr-green-d) !important; }
+
+/* keep the green invoice links green (no-op safety) */
+[class~="text-[#0E7A3B]"]{ color:var(--fr-green) !important; }
+
+/* ---------- other navy header banners / buttons / table heads (legacy pages —
+   commission-report, product-stock-transaction, stock-transfer-commission,
+   member-order*, product-stock-request) — any element, then buttons win back to solid ---------- */
+[class~="bg-[#12395f]"],
+[class~="bg-[#0f2d56]"],
+[class~="bg-[#103258]"]:not(.layout-sidebar){
+    background:linear-gradient(100deg,var(--fr-saffron) 0%, #EAA63F 44%, #77BF87 60%, var(--fr-green) 100%) !important;
+    color:#fff !important;
+}
+button[class~="bg-[#12395f]"], a[class~="bg-[#12395f]"], input[class~="bg-[#12395f]"],
+button[class~="bg-[#0f2d56]"], a[class~="bg-[#0f2d56]"], input[class~="bg-[#0f2d56]"],
+button[class~="bg-[#103258]"]:not(.layout-sidebar), a[class~="bg-[#103258]"]:not(.layout-sidebar){
+    background:var(--fr-green) !important; background-image:none !important; color:#fff !important;
+}
+button[class~="bg-[#12395f]"]:hover, a[class~="bg-[#12395f]"]:hover,
+button[class~="bg-[#0f2d56]"]:hover, a[class~="bg-[#0f2d56]"]:hover,
+button[class~="bg-[#103258]"]:not(.layout-sidebar):hover, a[class~="bg-[#103258]"]:not(.layout-sidebar):hover{
+    background:var(--fr-green-d) !important;
+}
+[class~="border-[#12395f]"]{ border-color:var(--fr-green) !important; }
+[class~="text-[#103258]"],
+[class~="text-[#0f2d56]"]{ color:var(--fr-ink) !important; }
+[class~="bg-[#eef4fb]"],
+[class~="bg-[#f8fafc]"]{ background:#FBF7F1 !important; }
+
+/* ---------- gold/brown "page title" component used across most legacy pages
+   (icon chip + serif heading + gold underline bar — profile.php, member-activation.php,
+   product-request.php, order-sale.php, compose/inbox/outbox, my-kyc.php, etc.) ---------- */
+[class~="text-[#40352a]"]{ color:var(--fr-ink) !important; }
+[class~="bg-[#f5eee3]"],
+[class~="bg-[#f7efe2]"],
+[class~="bg-[#f6eee2]"]{ background:var(--fr-saffron-soft) !important; }
+[class~="text-[#cd9737]"],
+[class~="text-[#c7921e]"],
+[class~="text-[#cf982f]"],
+[class~="text-[#C89741]"],
+[class~="text-[#ffbe2e]"]{ color:var(--fr-saffron) !important; }
+[class~="bg-[#d1a14b]"],
+[class~="bg-[#c89741]"],
+[class~="bg-[#C89741]"]{
+    background:linear-gradient(90deg,var(--fr-saffron) 0%, #F0A44F 45%, #7FBF8E 55%, var(--fr-green) 100%) !important;
+}
+[class~="border-[#d1a14b]"],
+[class~="border-[#b98225]"],
+[class~="border-[#c9983c]"]{ border-color:rgba(224,112,12,.35) !important; }
+
+/* ---------- misc light backgrounds / a stray blue link ---------- */
+[class~="bg-[#eef0f3]"],
+[class~="bg-[#f0f4fa]"],
+[class~="bg-[#f1f2f4]"],
+[class~="bg-[#f8f8f8]"]{ background:#FBF7F1 !important; }
+[class~="border-[#c5d5ea]"]{ border-color:var(--fr-line) !important; }
+[class~="text-[#2353f1]"]{ color:var(--fr-green) !important; }
+
+/* ---------- SIDEBAR ---------- */
+/* leaf-motif art (sidebar-bg.svg) + fine dot texture + soft glows over a deep green gradient */
+.layout-sidebar{
+    background-color:#0E3A2A !important;
+    background-image:
+        url("sidebar-bg.svg"),
+        radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(150% 46% at 12% 6%, rgba(140,215,165,.14), transparent 60%),
+        radial-gradient(130% 50% at 90% 96%, rgba(90,180,130,.12), transparent 60%),
+        linear-gradient(165deg, #0A2A1D 0%, #0E3A2A 48%, #185A38 100%) !important;
+    background-position:top center, 0 0, 0 0, 0 0, 0 0 !important;
+    background-size:100% auto, 22px 22px, cover, cover, cover !important;
+    background-repeat:no-repeat, repeat, no-repeat, no-repeat, no-repeat !important;
+    border-right-color:var(--fr-side-line) !important;
+    color:var(--fr-side-txt) !important;
+}
+.layout-sidebar [class~="border-[#254A73]"],
+.layout-sidebar .border-t{ border-color:rgba(255,255,255,.12) !important; }
+
+/* nav text */
+.layout-sidebar a,
+.layout-sidebar summary,
+.layout-sidebar span{ color:var(--fr-side-txt); }
+.layout-sidebar [class~="text-[#D7E1EC]"]{ color:#CFE6D8 !important; }
+.layout-sidebar [class~="text-[#9CB2C9]"],
+.layout-sidebar [class~="text-[#A9B8C9]"]{ color:var(--fr-side-mut) !important; }
+
+/* bigger, rounder nav rows */
+.layout-sidebar [class~="h-[40px]"]{ height:46px !important; border-radius:13px !important; }
+.layout-sidebar [class~="rounded-md"]{ border-radius:13px !important; }
+.layout-sidebar [class~="rounded"]{ border-radius:10px !important; }
+.layout-sidebar .space-y-1 > *{ margin-top:5px; }
+
+/* group hover / open */
+.layout-sidebar [class~="hover:bg-[#1A3F66]"]:hover{ background:rgba(255,255,255,.08) !important; }
+.layout-sidebar [class~="bg-[#1A3F66]"]{ background:rgba(255,255,255,.08) !important; }
+
+/* active + hover link → saffron gradient pill, with a trailing chevron on the active plain link */
+.layout-sidebar [class~="bg-[#DDBE7E]"]{
+    background:linear-gradient(90deg,var(--fr-saffron) 0%, #F0A44F 100%) !important;
+    color:#fff !important;
+    box-shadow:0 10px 22px -10px rgba(224,112,12,.6);
+    position:relative;
+}
+.layout-sidebar [class~="hover:bg-[#DDBE7E]"]:hover{ background:linear-gradient(90deg,var(--fr-saffron) 0%, #F0A44F 100%) !important; color:#fff !important; }
+.layout-sidebar [class~="hover:text-white"]:hover{ color:#fff !important; }
+.layout-sidebar a[class~="bg-[#DDBE7E]"]::after{
+    content:""; position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; background-repeat:no-repeat; background-size:contain;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* logo chip stays white; wordmark stays light */
+.layout-sidebar .bg-white{ background:#fff !important; }
+
+/* bottom tagline card */
+.fr-side-tag{
+    background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+}
+.fr-side-tag .ic{ background:rgba(255,255,255,.16); }
+
+/* ---------- shared print rules for report pages (Reports hub) ---------- */
+@media print{
+    .layout-sidebar, #layoutOverlay, .no-print{ display:none !important; }
+    .ml-64, [class~="md:ml-64"]{ margin-left:0 !important; }
+    body{ background:#fff !important; }
+    .shadow, .shadow-sm, .shadow-md{ box-shadow:none !important; }
+}

@@ -1,0 +1,31 @@
+/* Ensure images and iframes scale */
+img, iframe, video, svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+table { width: 100%; border-collapse: collapse; }
+.table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Adjust modals to fit small screens */
+#productModal .w-full, #receiptModal .w-full, #productsModal .w-full, #orderModal .w-full {
+  max-width: 100% !important;
+  margin: 0 12px !important;
+}
+
+@media (max-width: 640px) {
+  .inv-meta, .member-section, .order-grid, .mob-row { display: block !important; }
+  .order-grid { grid-template-columns: 1fr !important; }
+  .inv-meta { text-align: left !important; }
+  .btn-print { width: 100% !important; }
+  /* Reduce table cell padding a bit for small screens */
+  table td, table th { padding: 10px 8px !important; }
+}
+
+/* Small visual-preserving tweaks for sidebar/menu behavior */
+@media (max-width: 1023px) {
+  .ml-64 { margin-left: 0 !important; }
+}
+
+
+.break-words { word-break: break-word; word-wrap: break-word; }

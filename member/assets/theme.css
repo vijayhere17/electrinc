@@ -1,0 +1,111 @@
+/* =====================================================================
+   Member Panel — Indian tricolour theme (saffron / white / green)
+   Loaded once from includes/sidebar.php, applies to every panel page.
+   Overrides the navy/gold Tailwind arbitrary + config classes with
+   !important so it works regardless of the Tailwind Play-CDN inject order.
+   ===================================================================== */
+:root{
+    --fr-saffron:#E0700C;  --fr-saffron-d:#B25400;  --fr-saffron-soft:#FFF3E7;
+    --fr-green:#0E7A3B;     --fr-green-d:#0A5E2D;    --fr-green-soft:#EAF5EC;
+    --fr-ink:#232323;       --fr-ink-2:#6A6A6A;
+    --fr-page:#FBFAF6;      --fr-line:#ECE7DD;
+    --fr-side:#0E3A2A;      --fr-side-2:#12492F;     --fr-side-line:#1C5A3E;
+    --fr-side-mut:#A9C5B5;  --fr-side-txt:#E4F0E8;
+}
+
+/* ---------- page surfaces ---------- */
+body{ background:var(--fr-page) !important; }
+.bg-brand-page{ background:var(--fr-page) !important; }
+.bg-brand-surface{ background:#FBF7F1 !important; }
+.border-brand-border{ border-color:var(--fr-line) !important; }
+.shadow-soft{ box-shadow:0 4px 14px rgba(14,122,59,.10) !important; }
+
+/* ---------- brand.navy / brand.gold config classes ---------- */
+.bg-brand-navy{ background:var(--fr-green) !important; }
+.hover\:bg-brand-navyDark:hover{ background:var(--fr-green-d) !important; }
+.text-brand-navy{ color:var(--fr-ink) !important; }
+.text-brand-goldDark{ color:var(--fr-saffron-d) !important; }
+[class~="bg-[#F8F2E5]"]{ background:var(--fr-saffron-soft) !important; }
+
+/* ---------- literal navy (#102B4E) → green ---------- */
+[class~="bg-[#102B4E]"]{ background:var(--fr-green) !important; color:#fff !important; }
+[class~="text-[#102B4E]"]{ color:var(--fr-green-d) !important; }
+[class~="border-[#102B4E]"]{ border-color:var(--fr-green) !important; }
+[class~="from-[#102B4E]"]{ --tw-gradient-from:var(--fr-green) var(--tw-gradient-from-position) !important; --tw-gradient-to:rgb(14 122 59 / 0) var(--tw-gradient-to-position) !important; --tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+[class~="to-[#163B68]"]{ --tw-gradient-to:var(--fr-green-d) var(--tw-gradient-to-position) !important; }
+
+/* ---------- literal gold (#D4A64A) → saffron ---------- */
+[class~="bg-[#D4A64A]"]{ background:var(--fr-saffron) !important; color:#fff !important; }
+[class~="text-[#D4A64A]"]{ color:var(--fr-saffron-d) !important; }
+[class~="border-[#D4A64A]"]{ border-color:var(--fr-saffron) !important; }
+
+/* ---------- dashboard stat/income cards → tricolour gradient wash + premium silver-shine border ---------- */
+[class~="bg-white"][class~="border-[#102B4E]"],
+[class~="bg-white"][class~="border-[#D4A64A]"]{
+    background:linear-gradient(135deg, rgba(224,112,12,.16) 0%, #ffffff 48%, rgba(14,122,59,.16) 100%) !important;
+    border-width:1px !important;
+    border-color:#D9DEE6 !important;
+    box-shadow:0 1px 3px rgba(20,20,30,.06), inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+/* ---------- SIDEBAR ---------- */
+.layout-sidebar{
+    background-color:#0E3A2A !important;
+    background-image:
+        url("sidebar-bg.svg"),
+        radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(150% 46% at 12% 6%, rgba(140,215,165,.14), transparent 60%),
+        radial-gradient(130% 50% at 90% 96%, rgba(90,180,130,.12), transparent 60%),
+        linear-gradient(165deg, #0A2A1D 0%, #0E3A2A 48%, #185A38 100%) !important;
+    background-position:top center, 0 0, 0 0, 0 0, 0 0 !important;
+    background-size:100% auto, 22px 22px, cover, cover, cover !important;
+    background-repeat:no-repeat, repeat, no-repeat, no-repeat, no-repeat !important;
+    border-right-color:var(--fr-side-line) !important;
+    color:var(--fr-side-txt) !important;
+}
+.layout-sidebar [class~="border-[#254A73]"],
+.layout-sidebar .border-t{ border-color:rgba(255,255,255,.12) !important; }
+
+/* nav text */
+.layout-sidebar a,
+.layout-sidebar summary,
+.layout-sidebar span{ color:var(--fr-side-txt); }
+.layout-sidebar [class~="text-[#D7E1EC]"]{ color:#CFE6D8 !important; }
+.layout-sidebar [class~="text-[#9CB2C9]"],
+.layout-sidebar [class~="text-[#7E95AE]"]{ color:var(--fr-side-mut) !important; }
+.layout-sidebar [class~="text-[#103258]"]{ color:var(--fr-green-d) !important; }
+
+/* bigger, rounder nav rows */
+.layout-sidebar [class~="h-[40px]"]{ height:46px !important; border-radius:13px !important; }
+.layout-sidebar [class~="rounded-md"]{ border-radius:13px !important; }
+.layout-sidebar [class~="rounded"]{ border-radius:10px !important; }
+.layout-sidebar .space-y-1 > *{ margin-top:5px; }
+
+/* group hover / open */
+.layout-sidebar [class~="hover:bg-[#1A3F66]"]:hover{ background:rgba(255,255,255,.08) !important; }
+.layout-sidebar [class~="bg-[#1A3F66]"]{ background:rgba(255,255,255,.08) !important; }
+
+/* active + hover link → saffron gradient pill, with a trailing chevron on the active plain link */
+.layout-sidebar [class~="bg-[#DDBE7E]"]{
+    background:linear-gradient(90deg,var(--fr-saffron) 0%, #F0A44F 100%) !important;
+    color:#fff !important;
+    box-shadow:0 10px 22px -10px rgba(224,112,12,.6);
+    position:relative;
+}
+.layout-sidebar [class~="hover:bg-[#DDBE7E]"]:hover{ background:linear-gradient(90deg,var(--fr-saffron) 0%, #F0A44F 100%) !important; color:#fff !important; }
+.layout-sidebar [class~="hover:text-white"]:hover{ color:#fff !important; }
+.layout-sidebar a[class~="bg-[#DDBE7E]"]::after{
+    content:""; position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; background-repeat:no-repeat; background-size:contain;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* footer avatar circle */
+.layout-sidebar [class~="bg-gray-200"]{ background:rgba(255,255,255,.16) !important; color:#fff !important; }
+
+/* bottom tagline card */
+.fr-side-tag{
+    background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+}
+.fr-side-tag .ic{ background:rgba(255,255,255,.16); }
